@@ -110,3 +110,4 @@ sjt.xtab(dataBD$D132r, dataBD$B29r,
          show.row.prc = TRUE, # 顯示列百分比
          show.col.prc = TRUE  # 顯示欄百分比
 )
+
