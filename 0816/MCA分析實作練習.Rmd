@@ -1,5 +1,5 @@
 ---
-title: "2019 厚數據與意義探勘工作坊 民調資料探索 我的筆記與作業"
+title: "2019 厚數據與意義探勘工作坊 民調資料探索 我的筆記與作業(劉老師作業)"
 author: "陳聖勳"
 date: "2019.8.16"
 output: html_document
@@ -96,7 +96,7 @@ plot(resBD, axes=c(1, 2), new.plot=TRUE, #變數類別分布圖
      col.var="black", col.ind="black", col.ind.sup="black",
      col.quali.sup="darkgreen", col.quanti.sup="blue",
      label=c("var"), cex=0.7, 
-     selectMod = "cos2 20",   # 試試看，將20調為更高的數字，你會看到更多的變數類別
+     selectMod = "cos2 10",   # 試試看，將20調為更高的數字，你會看到更多的變數類別
      invisible=c("ind", "quali.sup"), 
      autoLab = "yes",
      xlim=c(-1, 1.5), ylim=c(-1.3, 1.5),
@@ -121,18 +121,33 @@ plot(resBD, axes=c(1, 2), new.plot=TRUE,
 ## 用卡方檢定確認具潛在關聯的變數之間的相關性  
 library(sjPlot)
 library(sjmisc)
-
-sjt.xtab(dataBD$D132r, dataBD$B29r,    ## 請把這兩個變數換成你想要檢視變數
+## (B31r) 1 接受讓習近平管管看 2 不接受 3 沒想法
+## (D56r) 1 選後支持韓國瑜 2 不支持 3 普通
+sjt.xtab(dataBD$B31r, dataBD$D56r,    ## 請把這兩個變數換成你想要檢視變數
          show.row.prc = TRUE, # 顯示列百分比
          show.col.prc = TRUE  # 顯示欄百分比
 )
-
+## (B31r) 1 接受讓習近平管管看 2 不接受 3 沒想法
+## (D56r) 1 選後支持柯文哲 2 不支持 3 普通
+sjt.xtab(dataBD$B31r, dataBD$D52r,    ## 請把這兩個變數換成你想要檢視變數
+         show.row.prc = TRUE, # 顯示列百分比
+         show.col.prc = TRUE  # 顯示欄百分比
+)
+## (B31r) 1 接受讓習近平管管看 2 不接受 3 沒想法
+## (B42r) 1 一國兩制在港澳實施的效果還可以 2 不理想 3 不清楚
+sjt.xtab(dataBD$B31r, dataBD$B42r,    ## 請把這兩個變數換成你想要檢視變數
+         show.row.prc = TRUE, # 顯示列百分比
+         show.col.prc = TRUE  # 顯示欄百分比
+)
 #想檢視多組關係，請把上一段複製貼上，調整變數，多做幾次吧！
 
 ```
 
 ### 再來，請你寫下經過你驗證後的、非常可能相關的一組組變數（請寫下最多三組有趣的即可）
 
+- *接受讓習近平管管看*和*選後支持韓國瑜*正相關，pvalue極小。
+- *接受讓習近平管管看*和*選後支持柯文哲*相關但相比選後支持韓國瑜相關性較低。
+- *接受讓習近平管管看*和*一國兩制在港澳實施的效果*正相關，pvalue小
 
 ## 編譯出你專屬的作品
 - 現在，請你用knit將你的分析結果存為html，上傳繳交到到Google Classroom (課程代碼：dnztvqb)
