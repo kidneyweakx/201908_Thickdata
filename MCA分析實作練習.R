@@ -65,13 +65,19 @@ dataBD4MCA  <- select(dataBD,
                       D150r # 1 願意到中國求學或工作 2 不願意 
 )
 
-dataBD4MCA.nona <- na.omit(dataBD4MCA)
+dataBD4MCA.nona <- na.omit(dataBD4MCA) # 去除無回答的人
 nrow(dataBD4MCA.nona) #559
 
 names(dataBD4MCA.nona) 
 resBD<-MCA(dataBD4MCA.nona, ncp=10, graph= F) 
 fviz_screeplot(resBD, ncp=10) 
 
+library(sjPlot)
+library(sjmisc)
+plot_frq(dataBD$D52r)
+
+#dataBD$Email <- NULL
+#dataBD$Name.x <- NULL 
 
 # BD變數類別關係圖
 
@@ -98,8 +104,7 @@ plot(resBD, axes=c(1, 2), new.plot=TRUE,
 
 
 ## 用卡方檢定確認具潛在關聯的變數之間的相關性  
-library(sjPlot)
-library(sjmisc)
+
 
 sjt.xtab(dataBD$D132r, dataBD$B29r, 
          show.row.prc = TRUE, # 顯示列百分比
